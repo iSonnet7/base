@@ -25,11 +25,17 @@ class MyApp extends StatelessWidget {
     if(user.currentUser != null){
       return MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.orange
+        ),
         home: Home(),
       );
     } else {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            primarySwatch: Colors.orange
+        ),
         home: Login(),
       );
     }
