@@ -42,14 +42,12 @@ class _RegisterState extends State<Register> {
               key: _formkey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget> [
+                children: <Widget>[
                   SizedBox(height: 20),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset("assets/splash.png", height: MediaQuery.of(context).size.height/6),
-                      ]
-                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Image.asset("assets/splash.png",
+                        height: MediaQuery.of(context).size.height / 6),
+                  ]),
                   SizedBox(height: 50),
                   Text(
                     "Bienvenido",
@@ -78,24 +76,27 @@ class _RegisterState extends State<Register> {
                   ),
                   SizedBox(height: 30),
                   TextFormField(
-                    controller: _passwordController,
-                    validator: (val) => val!.isNotEmpty
-                        ? null
-                        : "Por favor, introduzca una contraseña",
-                    decoration: InputDecoration(
-                        hintText: "Contraseña",
-                        prefixIcon: Icon(Icons.vpn_key),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        )),
-                  ),
+                      controller: _passwordController,
+                      validator: (val) => val!.isNotEmpty
+                          ? null
+                          : "Por favor, introduzca una contraseña",
+                      decoration: InputDecoration(
+                          hintText: "Contraseña",
+                          prefixIcon: Icon(Icons.vpn_key),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          )),
+                      obscureText: true),
                   SizedBox(height: 30),
                   MaterialButton(
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
                         AuthService auth = AuthService();
-                        UserCredential user = await auth.register(_emailController.text.trim(), _passwordController.text.trim(),);
-                        if(user != null){
+                        UserCredential user = await auth.register(
+                          _emailController.text.trim(),
+                          _passwordController.text.trim(),
+                        );
+                        if (user != null) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => Home()),
