@@ -1,6 +1,7 @@
 import 'package:base/screens/home.dart';
 import 'package:base/screens/login.dart';
 import 'package:base/services/auth_service.dart';
+import 'package:base/services/base_user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,16 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
+  late TextEditingController _nameController;
+  late TextEditingController _ageController;
   final _formkey = GlobalKey<FormState>();
 
   @override
   void initState() {
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    _nameController = TextEditingController();
+    _ageController = TextEditingController();
     super.initState();
   }
 
@@ -28,6 +33,8 @@ class _RegisterState extends State<Register> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _nameController.dispose();
+    _ageController.dispose();
     super.dispose();
   }
 
@@ -63,13 +70,40 @@ class _RegisterState extends State<Register> {
                   ),
                   SizedBox(height: 30),
                   TextFormField(
+                    controller: _nameController,
+                    validator: (val) => val!.isNotEmpty
+                        ? null
+                        : "Por favor, introduzca su nombre",
+                    decoration: InputDecoration(
+                        hintText: "Nombre",
+                        prefixIcon: Icon(Icons.add_reaction_outlined),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        )),
+                  ),
+                  SizedBox(height: 30),
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    controller: _ageController,
+                    validator: (val) => val!.isNotEmpty
+                        ? null
+                        : "Por favor, introduzca su edad",
+                    decoration: InputDecoration(
+                        hintText: "Edad",
+                        prefixIcon: Icon(Icons.cake_outlined),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        )),
+                  ),
+                  SizedBox(height: 30),
+                  TextFormField(
                     controller: _emailController,
                     validator: (val) => val!.isNotEmpty
                         ? null
                         : "Por favor, introduzca una dirección electronica",
                     decoration: InputDecoration(
                         hintText: "Correo",
-                        prefixIcon: Icon(Icons.mail),
+                        prefixIcon: Icon(Icons.mail_outlined),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         )),
@@ -82,7 +116,7 @@ class _RegisterState extends State<Register> {
                           : "Por favor, introduzca una contraseña",
                       decoration: InputDecoration(
                           hintText: "Contraseña",
-                          prefixIcon: Icon(Icons.vpn_key),
+                          prefixIcon: Icon(Icons.vpn_key_outlined),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           )),
@@ -92,10 +126,13 @@ class _RegisterState extends State<Register> {
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
                         AuthService auth = AuthService();
+                        UserService us = UserService();
                         UserCredential user = await auth.register(
                           _emailController.text.trim(),
                           _passwordController.text.trim(),
                         );
+                        await us.addUser(_nameController.text.trim(), _ageController.text.trim(), user.user!.uid.trim());
+
                         if (user != null) {
                           Navigator.push(
                             context,

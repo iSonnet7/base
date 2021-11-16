@@ -1,4 +1,5 @@
 import 'package:base/screens/login.dart';
+import 'package:base/screens/profile.dart';
 import 'package:base/services/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,12 @@ class _HomeState extends State<Home> {
                 Icons.account_circle_outlined,
                 color: Colors.cyan,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profile()),
+                );
+              },
             ),
             ListTile(
               title: Text('Resultados'),

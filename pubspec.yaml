@@ -67,6 +67,7 @@ flutter:
   - assets/splash.png
   - assets/profile.png
   - assets/main.jpeg
+  - assets/photo.png
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
