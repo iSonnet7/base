@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
             ListTile(
               title: Text('Salir'),
               leading: Icon(
-                Icons.logout_outlined,
+                Icons.login_outlined,
                 color: Colors.cyan,
               ),
               onTap: () {

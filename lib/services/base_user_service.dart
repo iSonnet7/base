@@ -7,41 +7,76 @@ class UserService {
   CollectionReference ref = FirebaseFirestore.instance.collection('usuarios');
   final user = FirebaseAuth.instance;
 
-  Future<String> getName() async {
-    QuerySnapshot users = await ref.get();
-
-    if (users.docs.length != 0) {
-      for (var doc in users.docs) {
-        if(identical(doc.get('userUid').toString(), user.currentUser!.uid.toString())){
-          print(doc.get('name').toString()+"\n\n");
-          return doc.get('name').toString();
-        }
-      }
-    }
-
-    return "";
-  }
-
-  Future<String> getAge() async {
-    QuerySnapshot users = await ref.get();
-
-    if (users.docs.length != 0) {
-      for (var doc in users.docs) {
-        if(identical(doc.get('userUid').toString(), user.currentUser!.uid.toString())){
-          return doc.get('age').toString();
-        }
-      }
-    }
-
-    return "";
-  }
-
-  Future<void> addUser(String nombre, String edad, String uid) async {
+  Future<void> addUser(String nombre, String edad, String uid, String test1Res, String test2Res, String test3Res) async {
     ref
-        .add({'name': nombre, 'age': edad, 'userUid': uid})
+        .add({'name': nombre, 'age': edad, 'userUid': uid, 'test1Res': test1Res, 'test2Res': test2Res, 'test3Res': test3Res})
         .then((value) => print("User added"))
         .catchError((error) => print("Error al agregar usuario: $error"));
   }
 
+  Future<String> getName() async {
+    QuerySnapshot quizData = await ref.get();
+    String name = "";
+    for (var i=0; i<quizData.docs.length; i++) {
+      DocumentSnapshot questionSnapshot=quizData.docs[i];
+      String userUid = questionSnapshot.get('userUid');
+      if(userUid == user.currentUser!.uid){
+        name =questionSnapshot.get('name');
+      }
+    }
+    return name;
+  }
+
+  Future<String> getAge() async {
+    QuerySnapshot quizData = await ref.get();
+    String age = "";
+    for (var i=0; i<quizData.docs.length; i++) {
+      DocumentSnapshot questionSnapshot=quizData.docs[i];
+      String userUid = questionSnapshot.get('userUid');
+      if(userUid == user.currentUser!.uid){
+        age =questionSnapshot.get('age');
+      }
+    }
+    return age;
+  }
+
+  Future<String> getTest1() async {
+    QuerySnapshot quizData = await ref.get();
+    String test1 = "";
+    for (var i=0; i<quizData.docs.length; i++) {
+      DocumentSnapshot questionSnapshot=quizData.docs[i];
+      String userUid = questionSnapshot.get('userUid');
+      if(userUid == user.currentUser!.uid){
+        test1 =questionSnapshot.get('test1Res');
+      }
+    }
+    return test1;
+  }
+
+  Future<String> getTest2() async {
+    QuerySnapshot quizData = await ref.get();
+    String test2 = "";
+    for (var i=0; i<quizData.docs.length; i++) {
+      DocumentSnapshot questionSnapshot=quizData.docs[i];
+      String userUid = questionSnapshot.get('userUid');
+      if(userUid == user.currentUser!.uid){
+        test2 =questionSnapshot.get('test2Res');
+      }
+    }
+    return test2;
+  }
+
+  Future<String> getTest3() async {
+    QuerySnapshot quizData = await ref.get();
+    String test3 = "";
+    for (var i=0; i<quizData.docs.length; i++) {
+      DocumentSnapshot questionSnapshot=quizData.docs[i];
+      String userUid = questionSnapshot.get('userUid');
+      if(userUid == user.currentUser!.uid){
+        test3 =questionSnapshot.get('test3Res');
+      }
+    }
+    return test3;
+  }
 
 }

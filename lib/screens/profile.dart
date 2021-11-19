@@ -22,6 +22,8 @@ class _ProfileState extends State<Profile> {
     _nameController = TextEditingController();
     _ageController = TextEditingController();
     super.initState();
+    getNombre();
+    getEdad();
   }
 
   @override
@@ -31,8 +33,23 @@ class _ProfileState extends State<Profile> {
     super.dispose();
   }
 
+  void getNombre() async {
+    String nombre = "";
+    nombre = await colle.getName();
+    print(nombre + "\n\nNombre devuelto");
+    _nameController.text = nombre;
+  }
+
+  void getEdad() async {
+    String edad = "";
+    edad = await colle.getAge();
+    _ageController.text = edad;
+    print(edad + "\n\nEdad devuelta");
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color(0xFFF4F9F9),
       appBar: AppBar(
