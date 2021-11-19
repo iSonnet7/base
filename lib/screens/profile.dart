@@ -98,67 +98,7 @@ class _ProfileState extends State<Profile> {
                       fontWeight: FontWeight.normal,
                       color: Color(0xFF777777),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Resultado 1 ",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF777777),
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                  Text(
-                    "Loquito",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFF777777),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Resultado 2 ",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF777777),
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                  Text(
-                    "Medio depresivo",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFF777777),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Resultado 3 ",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF777777),
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                  Text(
-                    "Medio suicida",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFF777777),
-                    ),
-                  ),
+                  )
                 ])),
       )),
     );
