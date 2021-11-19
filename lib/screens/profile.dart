@@ -1,55 +1,26 @@
+import 'dart:io';
+
 import 'package:base/services/base_user_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  String nombre;
+  String edad;
+
+  Profile(this.nombre, this.edad);
 
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
-  UserService colle = new UserService();
   final user = FirebaseAuth.instance;
-
-  late TextEditingController _nameController;
-  late TextEditingController _ageController;
-
-  @override
-  void initState() {
-    _nameController = TextEditingController();
-    _ageController = TextEditingController();
-    super.initState();
-    getNombre();
-    getEdad();
-  }
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _ageController.dispose();
-    super.dispose();
-  }
-
-  void getNombre() async {
-    String nombre = "";
-    nombre = await colle.getName();
-    print(nombre + "\n\nNombre devuelto");
-    _nameController.text = nombre;
-  }
-
-  void getEdad() async {
-    String edad = "";
-    edad = await colle.getAge();
-    _ageController.text = edad;
-    print(edad + "\n\nEdad devuelta");
-  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Color(0xFFF4F9F9),
       appBar: AppBar(
@@ -80,7 +51,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   SizedBox(height: 2),
                   Text(
-                    _nameController.text.trim(),
+                    widget.nombre,
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: 18,
@@ -100,7 +71,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   SizedBox(height: 2),
                   Text(
-                    _ageController.text.trim(),
+                    widget.edad,
                     textAlign: TextAlign.start,
                     style: TextStyle(
                       fontSize: 18,
