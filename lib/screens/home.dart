@@ -60,9 +60,9 @@ class _HomeState extends State<Home> {
               ),
               onTap: () {
                 getNombre();
-                sleep(Duration(seconds: 1));
+                sleep(Duration(milliseconds: 500));
                 getEdad();
-                sleep(Duration(seconds: 1));
+                sleep(Duration(milliseconds: 500));
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Profile(nombre, edad)),
