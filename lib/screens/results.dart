@@ -99,8 +99,6 @@ class _ResultsState extends State<Results> {
               ),
               GestureDetector(
                 onTap: () {
-                  updateData(widget.noQuiz,
-                      getDiagnosticByType(widget.noQuiz, widget.score));
                   Navigator.pop(context);
                 },
                 child: Container(
