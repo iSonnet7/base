@@ -76,7 +76,7 @@ class _RegisterState extends State<Register> {
                         : "Por favor, introduzca su nombre",
                     decoration: InputDecoration(
                         hintText: "Nombre",
-                        prefixIcon: Icon(Icons.add_reaction_outlined),
+                        prefixIcon: Icon(Icons.add_road_outlined),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         )),
@@ -131,7 +131,13 @@ class _RegisterState extends State<Register> {
                           _emailController.text.trim(),
                           _passwordController.text.trim(),
                         );
-                        await us.addUser(_nameController.text.trim(), _ageController.text.trim(), user.user!.uid.trim(), "", "", "");
+                        await us.addUser(
+                            _nameController.text.trim(),
+                            _ageController.text.trim(),
+                            user.user!.uid.trim(),
+                            "",
+                            "",
+                            "");
 
                         if (user != null) {
                           Navigator.push(

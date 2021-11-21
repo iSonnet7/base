@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:base/screens/login.dart';
 import 'package:base/screens/profile.dart';
+import 'package:base/screens/quiz_content.dart';
+import 'package:base/screens/quiz_content_two.dart';
 import 'package:base/services/auth_service.dart';
 import 'package:base/services/base_user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +22,6 @@ class _HomeState extends State<Home> {
   String nombre = "";
   String edad = "";
 
-
   void getNombre() async {
     nombre = await colle.getName();
     print(nombre + "\n\nNombre devuelto");
@@ -30,8 +31,6 @@ class _HomeState extends State<Home> {
     edad = await colle.getAge();
     print(edad + "\n\nEdad devuelta");
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +64,8 @@ class _HomeState extends State<Home> {
                 sleep(Duration(milliseconds: 500));
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Profile(nombre, edad)),
+                  MaterialPageRoute(
+                      builder: (context) => Profile(nombre, edad)),
                 );
               },
             ),
@@ -131,7 +131,7 @@ class _HomeState extends State<Home> {
                           padding: EdgeInsets.all(10),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget> [
+                            children: <Widget>[
                               Text(
                                 "Test de Escala de ansiedad para niños de Spence: ",
                                 style: TextStyle(
@@ -148,7 +148,16 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               SizedBox(height: 20),
-                              MaterialButton(onPressed: (){},
+                              MaterialButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QuizContent(
+                                              'dPH63VTpXuSnozPT625e',
+                                              'Test de escala de ansiedad',
+                                              1)));
+                                },
                                 height: 40,
                                 minWidth: 25,
                                 color: Color(0xFF318FB5),
@@ -178,7 +187,7 @@ class _HomeState extends State<Home> {
                           padding: EdgeInsets.all(10),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget> [
+                            children: <Widget>[
                               Text(
                                 "Test de Escala de sobre carga del cuidador Zarit: ",
                                 style: TextStyle(
@@ -195,7 +204,16 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               SizedBox(height: 20),
-                              MaterialButton(onPressed: (){},
+                              MaterialButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QuizContent(
+                                              'qpFkz1UdtwqZxXm8eaCS',
+                                              'Test de sobrecarga',
+                                              2)));
+                                },
                                 height: 40,
                                 minWidth: 25,
                                 color: Color(0xFF318FB5),
@@ -225,7 +243,7 @@ class _HomeState extends State<Home> {
                           padding: EdgeInsets.all(10),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget> [
+                            children: <Widget>[
                               Text(
                                 "Test de Ansiedad de Beck: ",
                                 style: TextStyle(
@@ -242,7 +260,16 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               SizedBox(height: 20),
-                              MaterialButton(onPressed: (){},
+                              MaterialButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QuizContentTwo(
+                                              'VQV2EVueWrSXlp1N4klG',
+                                              'Test de Ansiedad de Beck',
+                                              3)));
+                                },
                                 height: 40,
                                 minWidth: 25,
                                 color: Color(0xFF318FB5),
