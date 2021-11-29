@@ -18,9 +18,8 @@ class _AppLogo extends State<AppLogo> {
         children: <TextSpan>[
           TextSpan(
               text: widget.quizTitle,
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black.withOpacity(0.8))),
+              style:
+                  TextStyle(fontWeight: FontWeight.w600, color: Colors.white)),
         ],
       ),
     );

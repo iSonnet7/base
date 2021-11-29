@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Results extends StatefulWidget {
   final int score;
@@ -11,14 +12,20 @@ class Results extends StatefulWidget {
 }
 
 class _ResultsState extends State<Results> {
+  final user = FirebaseAuth.instance;
+
   void updateData(int noQuiz, String result) async {
     String campo = 'test' + '$noQuiz' + 'Res';
 
     DocumentReference documentReferencer = FirebaseFirestore.instance
-        .collection('usuarios')
-        .doc('AyQrBfYnHMih05CfexoJ');
+        .collection('users')
+        .doc(user.currentUser!.uid);
 
-    await documentReferencer.update({campo: result});
+    await documentReferencer
+        .update({campo: result})
+        .then((value) => print("User updated"))
+        .catchError(
+            (error) => print("Error al actualizar datos del usuario: $error"));
   }
 
   String getDiagnosticByType(int noQuiz, int score) {
@@ -75,6 +82,8 @@ class _ResultsState extends State<Results> {
 
   @override
   Widget build(BuildContext context) {
+    updateData(widget.noQuiz, getDiagnosticByType(widget.noQuiz, widget.score));
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,

@@ -10,7 +10,7 @@ class TitleIcon extends StatelessWidget {
       icon: Icon(
         Icons.arrow_back,
         size: 22,
-        color: Colors.black.withOpacity(0.8),
+        color: Colors.white,
       ),
     );
   }

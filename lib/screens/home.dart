@@ -6,6 +6,7 @@ import 'package:base/screens/quiz_content.dart';
 import 'package:base/screens/quiz_content_two.dart';
 import 'package:base/services/auth_service.dart';
 import 'package:base/services/base_user_service.dart';
+import 'package:base/services/base_user_service_two.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,18 +19,16 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final user = FirebaseAuth.instance;
   AuthService auth = AuthService();
-  UserService colle = new UserService();
+  UserServiceTwo colle = new UserServiceTwo();
   String nombre = "";
   String edad = "";
 
   void getNombre() async {
     nombre = await colle.getName();
-    print(nombre + "\n\nNombre devuelto");
   }
 
   void getEdad() async {
     edad = await colle.getAge();
-    print(edad + "\n\nEdad devuelta");
   }
 
   @override

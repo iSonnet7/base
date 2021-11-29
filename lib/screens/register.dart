@@ -2,6 +2,7 @@ import 'package:base/screens/home.dart';
 import 'package:base/screens/login.dart';
 import 'package:base/services/auth_service.dart';
 import 'package:base/services/base_user_service.dart';
+import 'package:base/services/base_user_service_two.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -126,7 +127,7 @@ class _RegisterState extends State<Register> {
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
                         AuthService auth = AuthService();
-                        UserService us = UserService();
+                        UserServiceTwo us = UserServiceTwo();
                         UserCredential user = await auth.register(
                           _emailController.text.trim(),
                           _passwordController.text.trim(),

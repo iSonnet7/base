@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:base/services/base_user_service.dart';
+import 'package:base/services/base_user_service_two.dart';
 import 'package:base/widgets/title_widget.dart';
 import 'package:base/widgets/title_icon_widget.dart';
 import 'package:base/widgets/question_answer_widget.dart';
@@ -25,7 +25,7 @@ List<int> _answersValue = [0, 0, 0, 0, 0];
 
 class _QuizContentState extends State<QuizContentTwo> {
   late QuerySnapshot questionsSnapshot;
-  UserService databaseService = new UserService();
+  UserServiceTwo databaseService = new UserServiceTwo();
 
   bool isLoading = true;
 
@@ -74,9 +74,10 @@ class _QuizContentState extends State<QuizContentTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xFFF4F9F9),
         appBar: AppBar(
             title: AppLogo(quizTitle: widget.quizTitle),
-            backgroundColor: Colors.transparent,
+            backgroundColor: Color(0xFF318FB5),
             centerTitle: true,
             elevation: 0.0,
             iconTheme: IconThemeData(color: Colors.black.withOpacity(0.7)),
@@ -101,6 +102,8 @@ class _QuizContentState extends State<QuizContentTwo> {
                               children: [
                                 ListView.builder(
                                     //padding: EdgeInsets.symmetric(horizontal: 5),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 20, horizontal: 0),
                                     shrinkWrap: true,
                                     physics: ClampingScrollPhysics(),
                                     itemCount: questionsSnapshot.docs.length,
