@@ -5,10 +5,11 @@ import 'package:base/screens/profile.dart';
 import 'package:base/screens/quiz_content.dart';
 import 'package:base/screens/quiz_content_two.dart';
 import 'package:base/services/auth_service.dart';
-import 'package:base/services/base_user_service.dart';
 import 'package:base/services/base_user_service_two.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'drawer_results.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _HomeState extends State<Home> {
   UserServiceTwo colle = new UserServiceTwo();
   String nombre = "";
   String edad = "";
+  String testRes1 = "", testRes2 = "", testRes3 = "";
 
   void getNombre() async {
     nombre = await colle.getName();
@@ -30,6 +32,19 @@ class _HomeState extends State<Home> {
   void getEdad() async {
     edad = await colle.getAge();
   }
+
+  void getTestRes1() async {
+    testRes1 = await colle.getTest1();
+  }
+
+  void getTestRes2() async {
+    testRes2 = await colle.getTest2();
+  }
+
+  void getTestRes3() async {
+    testRes3 = await colle.getTest3();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +73,9 @@ class _HomeState extends State<Home> {
               ),
               onTap: () {
                 getNombre();
-                sleep(Duration(milliseconds: 500));
+                sleep(Duration(milliseconds: 250));
                 getEdad();
-                sleep(Duration(milliseconds: 500));
+                sleep(Duration(milliseconds: 250));
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -74,7 +89,19 @@ class _HomeState extends State<Home> {
                 Icons.assessment_outlined,
                 color: Colors.cyan,
               ),
-              onTap: () {},
+              onTap: () {
+                getTestRes1();
+                sleep(Duration(milliseconds: 150));
+                getTestRes2();
+                sleep(Duration(milliseconds: 150));
+                getTestRes3();
+                sleep(Duration(milliseconds: 150));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DrawerResults(testRes1, testRes2, testRes3)),
+                );
+              },
             ),
             ListTile(
               title: Text('Salir'),

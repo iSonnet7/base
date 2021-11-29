@@ -39,7 +39,7 @@ class _ProfileState extends State<Profile> {
                     Image.asset("assets/photo.png",
                         height: MediaQuery.of(context).size.height / 6),
                   ]),
-                  SizedBox(height: 20),
+                  SizedBox(height: 2),
                   Text(
                     "Nombre ",
                     textAlign: TextAlign.start,

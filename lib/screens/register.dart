@@ -77,7 +77,7 @@ class _RegisterState extends State<Register> {
                         : "Por favor, introduzca su nombre",
                     decoration: InputDecoration(
                         hintText: "Nombre",
-                        prefixIcon: Icon(Icons.add_road_outlined),
+                        prefixIcon: Icon(Icons.add_outlined),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         )),
