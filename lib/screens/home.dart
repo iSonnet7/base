@@ -73,9 +73,9 @@ class _HomeState extends State<Home> {
               ),
               onTap: () {
                 getNombre();
-                sleep(Duration(milliseconds: 250));
+                sleep(Duration(milliseconds: 400));
                 getEdad();
-                sleep(Duration(milliseconds: 250));
+                sleep(Duration(milliseconds: 400));
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -91,11 +91,11 @@ class _HomeState extends State<Home> {
               ),
               onTap: () {
                 getTestRes1();
-                sleep(Duration(milliseconds: 150));
+                sleep(Duration(milliseconds: 400));
                 getTestRes2();
-                sleep(Duration(milliseconds: 150));
+                sleep(Duration(milliseconds: 400));
                 getTestRes3();
-                sleep(Duration(milliseconds: 150));
+                sleep(Duration(milliseconds: 400));
                 Navigator.push(
                   context,
                   MaterialPageRoute(
