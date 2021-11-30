@@ -300,7 +300,7 @@ class _HomeState extends State<Home> {
                                                 'dPH63VTpXuSnozPT625e',
                                                 'Test de Ansiedad de Beck',
                                                 'Instrucciones: En el cuestionario hay una lista de sintomas comunes de la ansiedad. Lea cada uno de los items atentamente, e indique cuanto le ha afectado en la ultima semana incluyendo hoy.',
-                                                3,
+                                                1,
                                               )));
                                 },
                                 height: 40,
