@@ -45,13 +45,13 @@ class _HomeState extends State<Home> {
     testRes3 = await colle.getTest3();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF4F9F9),
       appBar: AppBar(
         title: Text("CONOCE TU MENTE"),
+        centerTitle: true,
         backgroundColor: Color(0xFF318FB5),
       ),
       drawer: Drawer(
@@ -99,7 +99,8 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DrawerResults(testRes1, testRes2, testRes3)),
+                      builder: (context) =>
+                          DrawerResults(testRes1, testRes2, testRes3)),
                 );
               },
             ),
@@ -180,9 +181,11 @@ class _HomeState extends State<Home> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => QuizContent(
-                                              'dPH63VTpXuSnozPT625e',
-                                              'Test de escala de ansiedad',
-                                              1)));
+                                                'qpFkz1UdtwqZxXm8eaCS',
+                                                'Escala de ansiedad infantil',
+                                                'Instrucciones: Marca la opción según la frecuencia con la que te ocurren las siguientes situaciones. No hay respuestas buenas ni malas.',
+                                                2,
+                                              )));
                                 },
                                 height: 40,
                                 minWidth: 25,
@@ -235,10 +238,12 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => QuizContent(
-                                              'qpFkz1UdtwqZxXm8eaCS',
-                                              'Test de sobrecarga',
-                                              2)));
+                                          builder: (context) => QuizContentTwo(
+                                              'VQV2EVueWrSXlp1N4klG',
+                                              'Escala de sobrecarga',
+                                              'Instrucciones: A continuación se presenta una lista de afirmaciones, en las cuales se refleja cómo se sienten, a veces, las personas que cuidan a otra persona. Después de leer cada afirmación, debe indicar con que frecuencia se siente usted así: nunca, raramente, algunas veces, bastante a menudo y casi siempre. A la hora de responder piense que no existen respuestas acertadas o equivocadas, sino tan solo su experiencia.',
+                                              'Puntuación: 0. Nunca | 1. Rara vez | 2. Algunas veces | 3. Bastantes veces | 4. Casi siempre',
+                                              3)));
                                 },
                                 height: 40,
                                 minWidth: 25,
@@ -291,10 +296,12 @@ class _HomeState extends State<Home> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => QuizContentTwo(
-                                              'VQV2EVueWrSXlp1N4klG',
-                                              'Test de Ansiedad de Beck',
-                                              3)));
+                                          builder: (context) => QuizContent(
+                                                'dPH63VTpXuSnozPT625e',
+                                                'Test de Ansiedad de Beck',
+                                                'Instrucciones: En el cuestionario hay una lista de sintomas comunes de la ansiedad. Lea cada uno de los items atentamente, e indique cuanto le ha afectado en la ultima semana incluyendo hoy.',
+                                                3,
+                                              )));
                                 },
                                 height: 40,
                                 minWidth: 25,

@@ -12,9 +12,10 @@ import 'package:base/screens/results.dart';
 class QuizContent extends StatefulWidget {
   final String quizId;
   final String quizTitle;
+  final String instructions;
   final int noQuiz;
 
-  QuizContent(this.quizId, this.quizTitle, this.noQuiz);
+  QuizContent(this.quizId, this.quizTitle, this.instructions, this.noQuiz);
 
   @override
   _QuizContentState createState() => _QuizContentState();
@@ -100,6 +101,20 @@ class _QuizContentState extends State<QuizContent> {
                         : Container(
                             child: Column(
                               children: [
+                                SizedBox(height: 20),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 20),
+                                  child: Text(
+                                    widget.instructions,
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black.withOpacity(0.8),
+                                    ),
+                                  ),
+                                ),
                                 ListView.builder(
                                     //padding: EdgeInsets.symmetric(horizontal: 5),
                                     padding: EdgeInsets.symmetric(
@@ -117,13 +132,16 @@ class _QuizContentState extends State<QuizContent> {
                                     }),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Results(
-                                                  score: _score,
-                                                  noQuiz: widget.noQuiz,
-                                                )));
+                                    if (_questionsCompleted ==
+                                        questionsSnapshot.docs.length) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Results(
+                                                    score: _score,
+                                                    noQuiz: widget.noQuiz,
+                                                  )));
+                                    }
                                   },
                                   child: Container(
                                     padding: EdgeInsets.symmetric(
@@ -176,8 +194,11 @@ class _QuizContentTileState extends State<QuizContentTile> {
             child: Text(
               //Coloca la pregunta
               "${widget.index + 1}" + ". " + "${widget.questionModel.question}",
-              style:
-                  TextStyle(fontSize: 18, color: Colors.black.withOpacity(0.8)),
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                fontSize: 17,
+                color: Colors.black.withOpacity(0.8),
+              ),
             ),
           ),
           SizedBox(

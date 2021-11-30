@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/painting.dart';
 
 class Results extends StatefulWidget {
   final int score;
@@ -85,45 +86,77 @@ class _ResultsState extends State<Results> {
     updateData(widget.noQuiz, getDiagnosticByType(widget.noQuiz, widget.score));
 
     return Scaffold(
+      backgroundColor: const Color(0xFFD8E3E7),
       body: Container(
         height: MediaQuery.of(context).size.height,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Resultado",
-                style: TextStyle(fontSize: 28),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Text(
-                getDiagnosticByType(widget.noQuiz, widget.score),
-                style: TextStyle(fontSize: 22),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 45,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Text(
-                    "Inicio",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 23,
-                        fontWeight: FontWeight.w500),
-                  ),
+              Container(
+                width: 320,
+                decoration: BoxDecoration(
+                    color: Colors.white70,
+                    border: Border.all(color: Colors.grey.shade400, width: 1),
+                    borderRadius: BorderRadius.circular(42)),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+                child: Column(
+                  children: [
+                    Text(
+                      '¡Completado!',
+                      style: TextStyle(
+                        fontSize: 33,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey[800],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      "Tu resultado es:",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey[800]),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Text(
+                      getDiagnosticByType(widget.noQuiz, widget.score),
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey[800]),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 48, vertical: 16),
+                        decoration: BoxDecoration(
+                            color: Colors.blue[400],
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Text(
+                          "Inicio",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 23,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
+              ),
             ],
           ),
         ),
