@@ -11,9 +11,12 @@ import 'package:base/screens/results.dart';
 class QuizContentTwo extends StatefulWidget {
   final String quizId;
   final String quizTitle;
+  final String instructionsFirstPart;
+  final String instructionsSecondPart;
   final int noQuiz;
 
-  QuizContentTwo(this.quizId, this.quizTitle, this.noQuiz);
+  QuizContentTwo(this.quizId, this.quizTitle, this.instructionsFirstPart,
+      this.instructionsSecondPart, this.noQuiz);
 
   @override
   _QuizContentState createState() => _QuizContentState();
@@ -100,6 +103,38 @@ class _QuizContentState extends State<QuizContentTwo> {
                         : Container(
                             child: Column(
                               children: [
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 20),
+                                  child: Text(
+                                    widget.instructionsFirstPart,
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black.withOpacity(0.8),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 20),
+                                  child: Text(
+                                    widget.instructionsSecondPart,
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black.withOpacity(0.8),
+                                    ),
+                                  ),
+                                ),
                                 ListView.builder(
                                     //padding: EdgeInsets.symmetric(horizontal: 5),
                                     padding: EdgeInsets.symmetric(
@@ -117,13 +152,16 @@ class _QuizContentState extends State<QuizContentTwo> {
                                     }),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Results(
-                                                  score: _score,
-                                                  noQuiz: widget.noQuiz,
-                                                )));
+                                    if (_questionsCompleted ==
+                                        questionsSnapshot.docs.length) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Results(
+                                                    score: _score,
+                                                    noQuiz: widget.noQuiz,
+                                                  )));
+                                    }
                                   },
                                   child: Container(
                                     padding: EdgeInsets.symmetric(
@@ -176,8 +214,9 @@ class _QuizContentTileState extends State<QuizContentTile> {
             child: Text(
               //Coloca la pregunta
               "${widget.index + 1}" + ". " + "${widget.questionModel.question}",
+              textAlign: TextAlign.justify,
               style:
-                  TextStyle(fontSize: 18, color: Colors.black.withOpacity(0.8)),
+                  TextStyle(fontSize: 17, color: Colors.black.withOpacity(0.8)),
             ),
           ),
           SizedBox(
